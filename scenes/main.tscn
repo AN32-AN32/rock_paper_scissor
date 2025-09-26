@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxc01mqg0klo1"]
+
+[ext_resource type="Script" uid="uid://cx5symep23wm2" path="res://scenes/manager.gd" id="1_o5qli"]
+
+[node name="main" type="Node2D"]
+
+[node name="manager" type="Node" parent="."]
+script = ExtResource("1_o5qli")
+
+[node name="rocks" type="Node2D" parent="."]
+
+[node name="papers" type="Node2D" parent="."]
+
+[node name="scissors" type="Node2D" parent="."]
