@@ -1,17 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://ck4jgoscrhsae"]
+[gd_scene load_steps=5 format=3 uid="uid://ck4jgoscrhsae"]
 
 [ext_resource type="Script" uid="uid://dxv83qgr276po" path="res://scenes/piece.gd" id="1_gebih"]
+[ext_resource type="Texture2D" uid="uid://dhayw288lkfrc" path="res://scissor.png" id="2_s58gp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tvnf0"]
 font_size = 32
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gebih"]
-size = Vector2(15, 23)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s58gp"]
+radius = 13.5
+height = 43.0
 
 [node name="Piece" type="Area2D"]
 script = ExtResource("1_gebih")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -28,8 +31,12 @@ label_settings = SubResource("LabelSettings_tvnf0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_s58gp")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 1.5)
-shape = SubResource("RectangleShape2D_gebih")
+shape = SubResource("CapsuleShape2D_s58gp")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

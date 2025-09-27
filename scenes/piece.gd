@@ -5,21 +5,39 @@ var speed: int = 100
 var borderOff: int = 8
 var type : int
 
+var rock_tex = preload("res://rock.png")
+var paper_tex = preload("res://paper.png")
+var scissor_tex = preload("res://scissor.png")
+
+var rocks : Node;
+var papers : Node;
+var scissors : Node;
+
 func _ready() -> void:
 	velocity = Vector2(randf_range(-1, 1), randf_range(-1, 1))
 
 func move(dt: float) -> void:
 	position += velocity * speed * dt
 
+func setup(rock_node: Node, paper_node: Node, scissor_node: Node):
+	rocks = rock_node
+	papers = paper_node
+	scissors = scissor_node
+
 func set_type(paramType: int) -> void:
 	type = paramType
+	if self.get_parent():
+		get_parent().call_deferred('remove_child', self)
 	match type:
 		0:
-			$Label.text = "R"
+			$Sprite2D.texture = rock_tex
+			rocks.call_deferred('add_child', self)
 		1:
-			$Label.text = "P"
+			$Sprite2D.texture = paper_tex
+			papers.call_deferred('add_child', self)
 		2:
-			$Label.text = "S"
+			$Sprite2D.texture = scissor_tex
+			scissors.call_deferred('add_child', self)
 
 func collision(border: Vector2i) -> void:
 	if position.x <= borderOff || position.x >= border.x - borderOff:
