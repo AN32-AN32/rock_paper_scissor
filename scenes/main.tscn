@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxc01mqg0klo1"]
+[gd_scene load_steps=3 format=3 uid="uid://dxc01mqg0klo1"]
 
 [ext_resource type="Script" uid="uid://cx5symep23wm2" path="res://scenes/manager.gd" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://cb8nbk8pmj0ru" path="res://scenes/ui.tscn" id="2_0wfyh"]
 
-[node name="main" type="Node2D"]
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="manager" type="Node" parent="."]
 script = ExtResource("1_o5qli")
@@ -12,3 +19,6 @@ script = ExtResource("1_o5qli")
 [node name="papers" type="Node2D" parent="."]
 
 [node name="scissors" type="Node2D" parent="."]
+
+[node name="UI" parent="." instance=ExtResource("2_0wfyh")]
+layout_mode = 1

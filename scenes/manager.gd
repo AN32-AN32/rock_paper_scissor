@@ -8,6 +8,7 @@ extends Node
 @onready var rocks : Node = $"../rocks"
 @onready var papers : Node = $"../papers"
 @onready var scissors : Node = $"../scissors"
+@onready var ui : Node = $"../UI"
 
 const PIECE_COUNT : int = 10
 var gameOver : bool = false
@@ -23,8 +24,8 @@ func _ready() -> void:
 	generate(rocks, 0)
 	generate(papers, 1)
 	generate(scissors, 2)
-
 func _process(delta: float) -> void:
+	ui.set_count(rocks.get_child_count(), papers.get_child_count(), scissors.get_child_count())
 	if rocks.get_child_count() == PIECE_COUNT * 3:
 		print("Rocks Win!")
 		gameOver = true
